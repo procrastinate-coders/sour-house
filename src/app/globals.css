@@ -97,6 +97,10 @@ body {
   background-color: #FFFFFF;
   color: var(--color-text);
   overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* Lock scroll while loader is active */
@@ -108,6 +112,10 @@ img,
 video {
   display: block;
   max-width: 100%;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 svg {
