@@ -1,0 +1,95 @@
+/* ─────────────────────────────────────────────────────────
+   ABOUT SECTION
+───────────────────────────────────────────────────────── */
+
+.section {
+  position: relative;
+  background-color: #ffffff;
+  padding-top: 140px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 220px;
+  }
+}
+
+/* Two-column grid — image left (5/12), text right (6/12), 1 gap col */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    grid-template-columns: 5fr 6fr;
+    gap: 60px;
+    align-items: center;
+  }
+}
+
+/* ── Image column ─────────────────────────────────────── */
+
+.imageCol {
+  position: relative;
+}
+
+/* Portrait 3:4 */
+.mainImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Floating square accent — bottom-right, 42% of column width */
+.accent {
+  position: absolute;
+  bottom: -8%;
+  right: -8%;
+  width: 42%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 4px solid #ffffff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  will-change: transform;
+}
+
+/* ── Text column ──────────────────────────────────────── */
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: #444444;
+  max-width: 48ch;
+}

@@ -1,0 +1,272 @@
+/* ─────────────────────────────────────────────────────────
+   MENU SECTION
+   Outer section: full-bleed dark background (--color-dark).
+   Inner card: lighter shade (--color-primary), border-radius 20px, padding 20px.
+   Desktop: left column scrolls naturally, right column is position: sticky.
+   Images scale in as page scrolls through section (ScrollTrigger scrub).
+───────────────────────────────────────────────────────── */
+
+/* ─── Section — full-bleed dark container ─── */
+
+.section {
+  background: var(--color-dark);
+  color: var(--color-creme);
+  position: relative;
+  padding: 10px 20px;
+}
+
+
+/* ─── Inner card — lighter shade, rounded, padded ─── */
+
+.inner {
+  background: var(--color-primary);
+  border-radius: 20px;
+  padding: 20px;
+
+  /* Mobile: stacked */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Desktop: side-by-side */
+@media (min-width: 1200px) {
+  .inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* ─── Reverse layout — images left, menu right ─── */
+@media (min-width: 1200px) {
+  .sectionReverse .inner {
+    flex-direction: row-reverse;
+  }
+
+  .sectionReverse .left {
+    padding-left: 20px;
+    padding-right: var(--container-pad);
+  }
+
+  .sectionReverse .right {
+    padding-left: var(--container-pad);
+    padding-right: 20px;
+  }
+}
+
+/* ─── LEFT — normal page-scroll flow ─── */
+
+.left {
+  padding: 28px var(--container-pad) 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+@media (min-width: 1200px) {
+  .left {
+    flex: 1;
+    padding: 40px 40px 200px var(--container-pad);
+  }
+}
+
+/* ─── Title ─── */
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 110px);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  margin: 0 0 48px;
+}
+
+/* Char mask — parent clips the slide-in travel */
+.title :global(.charMask) {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 0.95;
+  vertical-align: bottom;
+}
+
+.title :global(.char) {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ─── RIGHT — sticky image column ─── */
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--container-pad) 40px;
+  overflow: hidden;
+  /* Images on top for mobile & tablet */
+  order: -1;
+}
+
+@media (min-width: 1200px) {
+  .right {
+    flex: 1;
+    position: sticky;
+    top: 30px;
+    align-self: flex-start;
+    height: calc(100lvh - 60px);
+    padding: 0 var(--container-pad) 0 20px;
+    overflow: hidden;
+    order: unset; /* restore natural order on desktop */
+  }
+}
+
+/* ─── Images container ─── */
+
+.imgs {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .imgs {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .imgs {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0;
+    height: 100%;
+    width: min(100%, calc((100lvh - 60px) * 576 / 655));
+  }
+}
+
+/* ─── Individual image wrapper ─── */
+
+.imgWrap {
+  position: relative;
+  overflow: clip;
+  border-radius: 16px;
+  aspect-ratio: 576 / 655;
+  flex: 1;
+  background: color-mix(in srgb, var(--color-dark) 80%, #000);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@media (min-width: 1200px) {
+  .imgWrap {
+    border-radius: 16px;
+    flex: unset;
+    aspect-ratio: unset;
+    grid-area: 1 / 1;
+    z-index: var(--index);
+  }
+}
+
+.img {
+  object-fit: cover;
+}
+
+/* ─── Menu list ─── */
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuTitle {
+  padding-bottom: 14px;
+  padding-top: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.menuTitle:first-child {
+  padding-top: 0;
+}
+
+.menuTitleWithFormat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.menuTitleText {
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-creme);
+}
+
+.menuTitleFormat {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .menuTitleFormat {
+    font-size: 15px;
+  }
+}
+
+.menuItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
+  row-gap: 3px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+}
+
+@media (min-width: 1200px) {
+  .menuItem {
+    padding: 17px 0;
+  }
+}
+
+.itemName {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.itemDesc {
+  grid-column: 1;
+  grid-row: 2;
+  font-family: var(--font-body);
+  font-size: clamp(12px, 0.9vw, 15px);
+  line-height: 1.4;
+  opacity: 0.65;
+  margin: 0;
+}
+
+.itemPrice {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.8vw, 28px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+  align-self: center;
+  white-space: nowrap;
+}

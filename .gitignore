@@ -1,0 +1,10 @@
+# Node Modules
+/node_modules
+.next
+.env
+.DS_Store
+.vscode
+.idea
+.cursor
+.agent
+.vercel

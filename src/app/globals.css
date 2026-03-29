@@ -1,0 +1,139 @@
+/* ─────────────────────────────────────────────────────────
+   FONTS  (Google Fonts — free replacements)
+   Kaio-Krilin  →  Plus Jakarta Sans  (blocky display)
+   Lapidar03    →  DM Sans            (clean body)
+───────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=Cormorant+Garamond:wght@700&display=swap');
+
+/* ─────────────────────────────────────────────────────────
+   CSS VARIABLES
+───────────────────────────────────────────────────────── */
+:root {
+  /* Brand colours */
+  --color-dark:       #894036;   /* deep brown — main section background */
+  --color-primary:    #9c554c;   /* medium brown — card / inner surfaces */
+  --color-accent:     #9CA3AF;   /* muted gray */
+  --color-text:       #000000;
+  --color-creme:      #FFFFFF;
+  --color-glace:      #F5F5F5;
+  --color-soft-pink:  #ECEDEF;
+  --color-soft-peach: #ffdcc6;
+  --color-soft-blue:  #bed9eb;
+  /* Aliases kept for backward-compatibility with Loader styles */
+  --color-chocolat:   var(--color-dark);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* Grid */
+  --col-count: 4;
+  --col-gap: 12px;
+  --container-pad: 20px;
+
+  /* Header */
+  --header-height: 110px;
+
+  /* Loader */
+  --loader-delay: 100ms;
+  --loader-clip-from: 0%;
+  --loader-clip-to: 50%;
+  --loader-clip-radius: 20px;
+  --loader-scale: 0.5;
+  --loader-media-size: clamp(180px, 22vw, 300px);
+
+  /* Easing — matches original site's CSS linear() bounce */
+  --bounce-easing: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938,
+      1.077 20.4%, 1.121, 1.149 24.3%, 1.163 27%, 1.154 29.9%,
+      1.017 43.1%, 0.991, 0.977 51%, 0.975 57.1%, 1.003 76.9%, 1);
+  --bounce-more-easing: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938,
+      1.092 20.4%, 1.145, 1.179 24.3%, 1.195 27%, 1.185 29.9%,
+      1.017 43.1%, 0.991, 0.977 51%, 0.975 57.1%, 1.003 76.9%, 1);
+  --expo-easing: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+/* Responsive grid */
+@media (min-width: 768px) {
+  :root {
+    --col-count: 8;
+    --col-gap: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --col-count: 12;
+    --col-gap: 20px;
+    --container-pad: 40px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #FFFFFF;
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* Lock scroll while loader is active */
+body.loader-active {
+  overflow: hidden;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────────
+   UTILITIES
+───────────────────────────────────────────────────────── */
+.container-fluid {
+  width: 100%;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--col-count), 1fr);
+  gap: var(--col-gap);
+}
+
+/* image-as-background */
+.image-as-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

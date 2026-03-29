@@ -1,0 +1,29 @@
+.jellyBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 375 / 150;
+  max-height: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.jellyTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 375 / 150;
+  max-height: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .jellyBottom,
+  .jellyTop {
+    aspect-ratio: 1440 / 300;
+    max-height: 300px;
+  }
+}

@@ -1,0 +1,178 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  pointer-events: none;
+  /* Opacity is controlled by GSAP — starts at 0, fades in after loader */
+  will-change: opacity;
+}
+
+.wrap {
+  display: grid;
+  /* 3-column: slogan | address | phone */
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  padding: 30px var(--container-pad) 20px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1200px) {
+  .wrap {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+}
+
+.slogan {
+  justify-self: start;
+  grid-column: 1;
+  pointer-events: all;
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .slogan {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .slogan {
+    font-size: 13px;
+  }
+}
+
+.address {
+  grid-column: 2;
+  justify-self: center;
+  text-align: center;
+  pointer-events: all;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .address {
+    display: block;
+  }
+}
+
+.phone {
+  grid-column: 3;
+  justify-self: end;
+  pointer-events: all;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .phone {
+    display: block;
+  }
+}
+
+/* Mobile + tablet burger */
+.burger {
+  grid-column: 3;
+  justify-self: end;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 10px;
+  gap: 5px;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  pointer-events: all;
+  color: currentColor;
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .burger {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .burger {
+    display: none;
+    font-size: 13px;
+  }
+}
+
+/* Chevron rotation */
+.chevron {
+  display: inline-flex;
+  transition: transform 0.25s ease;
+}
+
+.chevronOpen {
+  display: inline-flex;
+  transform: rotate(180deg);
+}
+
+/* Dropdown panel — mobile/tablet only */
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px var(--container-pad) 24px;
+  background: var(--color-dark);
+  color: var(--color-creme);
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.dropdownOpen {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+@media (min-width: 1200px) {
+  .dropdown {
+    display: none;
+  }
+}
+
+.dropdownItem {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.dropdownItem:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+/* Spacer so page content starts below header */
+.spacer {
+  width: 100%;
+  height: var(--header-height);
+  visibility: hidden;
+  pointer-events: none;
+}

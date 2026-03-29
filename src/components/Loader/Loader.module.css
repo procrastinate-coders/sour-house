@@ -1,0 +1,72 @@
+/* ─────────────────────────────────────────────────────────
+   LOADER
+   Matches kremkanel.com's loader exactly:
+   - Chocolate bg fills viewport
+   - Spiral SVG spins at 10s/turn
+   - On .jsReady: background iris-wipes, spiral scales down,
+     food image blooms open
+───────────────────────────────────────────────────────── */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100lvh;
+  z-index: 10000;
+  overflow: clip;
+  pointer-events: all;
+}
+
+/* The full-bleed chocolate background */
+.wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-chocolat);
+  will-change: clip-path;
+}
+
+/* ─── Swirl container ─── */
+.swirl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  pointer-events: none;
+  /* Deliberately oversized — must bleed past every viewport edge */
+  aspect-ratio: 1551 / 1601;
+  min-height: 156.25%;
+  min-width: 107.64%;
+  /* Match bg so SVG transparent gaps are invisible */
+  background: var(--color-chocolat);
+}
+
+.swirl svg {
+  width: 100%;
+  height: 100%;
+  /* Spin is driven by GSAP — transform-origin set via gsap transformOrigin */
+  will-change: transform;
+}
+
+/* ─── Media thumbnail (food image reveal) ─── */
+.media {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: var(--loader-media-size);
+  height: var(--loader-media-size);
+  border-radius: var(--loader-clip-radius);
+  overflow: clip;
+  clip-path: inset(50% round 20px);
+  will-change: clip-path;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Exit sequence is now driven entirely by GSAP in Loader.tsx */
