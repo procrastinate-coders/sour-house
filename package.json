@@ -1,6 +1,7 @@
 {
-  "name": "krem-kanel-clone",
+  "name": "sour-house",
   "version": "0.1.0",
+  "author": "Procrastinate Coders",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   description: 'Sourdough bakery & cafe',
   keywords: ['bakery', 'sourdough', 'cafe', 'pastries', 'bread', 'Sour House'],
-  authors: [{ name: 'Sour House' }],
+  authors: [{ name: 'Procrastinate Coders' }],
   alternates: {
     canonical: '/',
   },
